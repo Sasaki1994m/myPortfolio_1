@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +13,8 @@
     <p>
         {{ $user->name }},
         {{ $user->login_id }},
-        <!-- {{ $user->timestamp->punchIn }},
-        {{ $user->timestamp->punchOut }} -->
+        {{ $user->timestamps->punchIn }},
+        {{ $user->timestamps->punchOut }}
     </p>
     @endforeach
 </body>
