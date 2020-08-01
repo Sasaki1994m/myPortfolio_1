@@ -2,17 +2,17 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
+//↓を追加で書く
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+//[Authenticatable]を追加で書く　※User.phpと書くことは同じ
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Carbon\Carbon;
 
-
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
 
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -30,16 +30,4 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-    public function timestamps()
-    {
-        return $this->hasMany('App\Timestamp');
-    }
 }

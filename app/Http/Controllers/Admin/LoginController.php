@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -27,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/timestamps';
+    protected $redirectTo = '/admin/home';
 
     /**
      * Create a new controller instance.
@@ -36,19 +37,28 @@ class LoginController extends Controller
      */
      public function __construct()
     {
-     $this->middleware('guest')->except('logout');
+     $this->middleware('guest:admin')->except('logout');
     
     //  $this->redirectPath = route('timestamp.list');
     //  $this->loginPath = route('timestamp.list');
     //  $this->redirectAfterLogout = route('logout');
     }    
-    public function logout()
+    public function showLoginForm()
     {
-        Auth::logout();
-        // $this->guard()->logout();
-        // $request->session()->invalidate();
-        return  redirect('/register');
-
+        // var_dump(__LINE__);die;
+        return view('admin.login');  //変更
+    }
+    protected function guard()
+    {
+        return Auth::guard('admin');  //変更
+    }
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();  //変更
+        $request->session()->flush();
+        $request->session()->regenerate();
+ 
+        return redirect('/admin/login');  //変更
     }
     
 }

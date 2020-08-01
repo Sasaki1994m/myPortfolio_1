@@ -13,16 +13,28 @@ class UsersTableSeeder extends Seeder
     {
         \DB::table('users')->insert([
             [
-             'name' =>'佐々木',
-             'login_id' =>'1234',
-             'password' => 'sasakio7'
-            ],
+                'name' => '川端 莉緒',
+                'email' => 'kawabata@info.com',
+                'password' => 'kawabata',
+                'role' => 'owner',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+             ],
             [
-             'name' =>'山田',
-             'login_id' =>'567',
-             'password' => 'yamada9'
+                'name' => '小玉 隆博',
+                'email' => 'kodama@info.com',
+                'password' => 'kodama',
+                'role' => 'customer',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
-
+            // [
+            //     'name' => '岩井 圭',
+            //     'login_id' => 'iwai',
+            //     'password' => '3242',
+            //     'created_at' => date('Y-m-d H:i:s'),
+            //     'updated_at' => date('Y-m-d H:i:s'),
+            // ],
         ]);
     }
 }
